@@ -1,14 +1,13 @@
 package com.example.user_service.models;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum LanguageEnum {
 
-    ENGLIGH(1, "English"),
+    ENGLISH(1, "English"),
     FRENCH(2, "French"),
     SWAHILI(3, "Swahili"),
-    LUGANDA(4, "Uganda");
+    LUGANDA(4, "Luganda");
 
     private final int id;
     private final String name;

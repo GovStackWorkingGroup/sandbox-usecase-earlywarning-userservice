@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS "end_user_table"
     email                         VARCHAR(255) UNIQUE NOT NULL,
     contactPhone                  VARCHAR(20)         NOT NULL,
     countryId                     INTEGER             NOT NULL,
+    countyId                      INTEGER             NOT NULL,
     defaultLanguageId             INTEGER             NOT NULL,
     defaultCommunicationChannelId INTEGER             NOT NULL
 );

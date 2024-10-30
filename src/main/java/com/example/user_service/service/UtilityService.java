@@ -15,7 +15,13 @@ import java.util.stream.Collectors;
 @Service
 public class UtilityService {
     public List<CountryDto> getAllCountries() {
-        return Arrays.stream(CountryEnum.values()).map(c -> CountryDto.builder().id(c.getId()).name(c.getName()).countryLanguages(c.getCountryLanguages()).build()).collect(Collectors.toList());
+        return Arrays.stream(CountryEnum.values()).map(c ->
+                CountryDto.builder()
+                        .id(c.getId())
+                        .name(c.getName())
+                        .countryLanguages(c.getCountryLanguages())
+                        .counties(c.getCounties())
+                        .build()).collect(Collectors.toList());
     }
 
     public List<LanguageDto> getAllLanguages() {
@@ -24,5 +30,25 @@ public class UtilityService {
 
     public List<CommunicationChannelDto> getAllCommunicationChannels() {
         return Arrays.stream(CommunicationChannelEnum.values()).map(c -> CommunicationChannelDto.builder().id(c.getId()).name(c.getName()).build()).collect(Collectors.toList());
+    }
+
+    public CountryDto getCountryByName(String countryName) {
+        final CountryEnum countryEnum = CountryEnum.getByName(countryName);
+        return CountryDto.builder()
+                .id(countryEnum.getId())
+                .name(countryEnum.getName())
+                .countryLanguages(countryEnum.getCountryLanguages())
+                .counties(countryEnum.getCounties())
+                .build();
+    }
+
+    public CountryDto getCountryById(int countryId) {
+        final CountryEnum countryEnum = CountryEnum.getById(countryId);
+        return CountryDto.builder()
+                .id(countryEnum.getId())
+                .name(countryEnum.getName())
+                .countryLanguages(countryEnum.getCountryLanguages())
+                .counties(countryEnum.getCounties())
+                .build();
     }
 }

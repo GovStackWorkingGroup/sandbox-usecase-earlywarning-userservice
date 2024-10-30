@@ -19,6 +19,7 @@ public class EndUser {
     private String email;
     private String contactPhone;
     private int countryId;
+    private int countyId;
     private int defaultLanguageId;
     private int defaultCommunicationChannelId;
     private LocalDateTime createdAt;

@@ -26,6 +26,16 @@ public class UtilityControllerImpl implements UtilityController {
     }
 
     @Override
+    public CountryDto getCountryByName(String countryName) {
+        return this.utilityService.getCountryByName(countryName);
+    }
+
+    @Override
+    public CountryDto getCountryById(int countryId) {
+        return this.utilityService.getCountryById(countryId);
+    }
+
+    @Override
     public List<LanguageDto> getAllLanguages() {
         return this.utilityService.getAllLanguages();
     }

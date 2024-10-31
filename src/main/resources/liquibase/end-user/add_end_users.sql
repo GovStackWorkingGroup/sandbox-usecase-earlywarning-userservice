@@ -2,7 +2,7 @@
 
 --changeset vuk:add_end_users
 --preconditions onFail:HALT onError:HALT
-INSERT INTO public."end_user_table"
+INSERT INTO public."end_user"
 (endUserUUID, fullname, email, contactphone, countryid, countyId, defaultLanguageId, defaultCommunicationChannelId)
 VALUES('5a2e626c-1222-44a3-b5a2-8cb21167c354'::uuid, 'End User 1', 'enduser1@test.com','123456',1,1, 1, 1),
 ('52ccd487-697f-4b87-b5df-b38937787d54'::uuid, 'End User 2', 'enduser2@test.com', '123456',2,2, 2,1),

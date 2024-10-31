@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "end_user_table")
+@Table(name = "end_user", schema = "public")
 public class EndUser {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "end_user_id_seq")
@@ -22,9 +22,5 @@ public class EndUser {
     private int countyId;
     private int defaultLanguageId;
     private int defaultCommunicationChannelId;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    private UUID createdBy;
-    private UUID updatedBy;
 
 }

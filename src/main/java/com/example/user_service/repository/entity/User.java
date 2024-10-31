@@ -22,8 +22,4 @@ public class User {
     private String password;
     private String contactPhone;
     private int countryId;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    private UUID createdBy;
-    private UUID updatedBy;
 }

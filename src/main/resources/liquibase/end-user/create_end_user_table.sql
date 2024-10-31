@@ -9,7 +9,7 @@ CREATE SEQUENCE IF NOT EXISTS end_user_id_seq
     NO MAXVALUE
     CACHE 1;
 
-CREATE TABLE IF NOT EXISTS "end_user_table"
+CREATE TABLE IF NOT EXISTS "end_user"
 (
     id                            BIGINT              NOT NULL DEFAULT nextval('end_user_id_seq') PRIMARY KEY,
     endUserUUID                   UUID                NOT NULL,

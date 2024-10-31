@@ -1,9 +1,7 @@
 package com.example.user_service.service;
 
-import com.example.user_service.models.dtos.CommunicationChannelDto;
-import com.example.user_service.models.dtos.CountryDto;
-import com.example.user_service.models.dtos.EndUserDto;
-import com.example.user_service.models.dtos.LanguageDto;
+import com.example.user_service.models.CountyEnum;
+import com.example.user_service.models.dtos.*;
 import com.example.user_service.repository.EndUserRepository;
 import com.example.user_service.models.CommunicationChannelEnum;
 import com.example.user_service.models.CountryEnum;
@@ -31,10 +29,28 @@ public class EndUserService {
                                 .fullName(e.getFullName())
                                 .email(e.getEmail())
                                 .phoneNumber(e.getContactPhone())
-                                .country(CountryDto.builder().id(CountryEnum.getById(e.getCountryId()).getId()).name(CountryEnum.getById(e.getCountryId()).getName()).build())
-                                .language(LanguageDto.builder().id(LanguageEnum.getById(e.getDefaultLanguageId()).getId()).name(LanguageEnum.getById(e.getDefaultLanguageId()).getName()).build())
-                                .defaultCommunicationChannel(CommunicationChannelDto.builder().id(CommunicationChannelEnum.getById(e.getDefaultCommunicationChannelId()).getId()).name(CommunicationChannelEnum.getById(e.getDefaultCommunicationChannelId()).getName()).build())
+                                .country(SimpleCountryDto.builder().countryId(CountryEnum.getById(e.getCountryId()).getId()).name(CountryEnum.getById(e.getCountryId()).getName()).build())
+                                .county(CountyEnum.getById(e.getCountyId()))
+                                .language(LanguageEnum.getById(e.getDefaultLanguageId()))
+                                .defaultCommunicationChannel(CommunicationChannelEnum.getById(e.getDefaultCommunicationChannelId()))
                                 .build())
                 .collect(Collectors.toList());
+    }
+
+    public List<EndUserDto> getAllEndUsersForCounty(int countryId, int countyId) {
+        return this.endUserRepository.findEndUserByCountryIdAndCountyId(countryId, countyId)
+                .stream().map(e ->
+                        EndUserDto.builder()
+                                .endUserUUID(e.getEndUserUUID())
+                                .fullName(e.getFullName())
+                                .email(e.getEmail())
+                                .phoneNumber(e.getContactPhone())
+                                .country(SimpleCountryDto.builder().countryId(CountryEnum.getById(e.getCountryId()).getId()).name(CountryEnum.getById(e.getCountryId()).getName()).build())
+                                .county(CountyEnum.MOMBASA)
+                                .language(LanguageEnum.getById(e.getDefaultLanguageId()))
+                                .defaultCommunicationChannel(CommunicationChannelEnum.getById(e.getDefaultCommunicationChannelId()))
+                                .build())
+                .collect(Collectors.toList());
+
     }
 }

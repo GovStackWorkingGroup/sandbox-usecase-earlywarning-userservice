@@ -1,5 +1,8 @@
 package com.example.user_service.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum CommunicationChannelEnum {
 
     SMS(1, "SMS"),

@@ -22,4 +22,8 @@ public class EndUserControllerImpl implements EndUserController {
     public List<EndUserDto> getEndUsersForCountry(int countryId) {
         return this.endUserService.getAllEndUsersForCountry(countryId);
     }
+    @Override
+    public List<EndUserDto> getEndUsersForCounty(int countryId, int countyId) {
+        return this.endUserService.getAllEndUsersForCounty(countryId, countyId);
+    }
 }

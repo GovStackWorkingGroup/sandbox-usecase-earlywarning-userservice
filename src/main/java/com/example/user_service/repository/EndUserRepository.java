@@ -8,5 +8,6 @@ import java.util.List;
 public interface EndUserRepository extends JpaRepository<EndUser, Long> {
 
    List<EndUser>findEndUserByCountryId(int countryId);
+   List<EndUser>findEndUserByCountryIdAndCountyId(int countryId, int countyId);
 
 }

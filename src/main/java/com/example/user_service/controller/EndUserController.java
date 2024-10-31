@@ -10,5 +10,7 @@ public interface EndUserController {
 
     @GetMapping(path = "/getEndUsersForCountry")
     List<EndUserDto> getEndUsersForCountry(@RequestParam int countryId);
+    @GetMapping(path = "/getEndUsersForCounty")
+    List<EndUserDto> getEndUsersForCounty(@RequestParam int countryId, @RequestParam int countyId);
 
 }

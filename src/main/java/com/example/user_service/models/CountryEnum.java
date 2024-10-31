@@ -1,6 +1,9 @@
 package com.example.user_service.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.List;
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum CountryEnum {
 
     KENYA(1, "Kenya", List.of(LanguageEnum.ENGLISH, LanguageEnum.SWAHILI), List.of(CountyEnum.MOMBASA, CountyEnum.KWALE, CountyEnum.MANDERA)),

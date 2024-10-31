@@ -36,4 +36,14 @@ public enum CountyEnum {
         throw new IllegalArgumentException("No county found with name: " + countyName);
     }
 
+    public static CountyEnum getById(int countyId) {
+        for (CountyEnum countyEnum : CountyEnum.values()) {
+            if (countyEnum.getId() == countyId) {
+                return countyEnum;
+            }
+        }
+        throw new IllegalArgumentException("No county found with id: " + countyId);
+    }
+
+
 }

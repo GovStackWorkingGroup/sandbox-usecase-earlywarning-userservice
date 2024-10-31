@@ -37,8 +37,8 @@ public class EndUserService {
                 .collect(Collectors.toList());
     }
 
-    public List<EndUserDto> getAllEndUsersForCounty(int countryId, int countyId) {
-        return this.endUserRepository.findEndUserByCountryIdAndCountyId(countryId, countyId)
+    public List<EndUserDto> getAllEndUsersForCounty(EndUserRequestDto requestDto) {
+        return this.endUserRepository.findEndUserByCountryIdAndCountyId(requestDto.countryId(), requestDto.countyId())
                 .stream().map(e ->
                         EndUserDto.builder()
                                 .endUserUUID(e.getEndUserUUID())

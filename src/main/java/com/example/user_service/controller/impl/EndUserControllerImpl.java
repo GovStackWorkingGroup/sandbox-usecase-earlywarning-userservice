@@ -2,6 +2,7 @@ package com.example.user_service.controller.impl;
 
 import com.example.user_service.controller.EndUserController;
 import com.example.user_service.models.dtos.EndUserDto;
+import com.example.user_service.models.dtos.EndUserRequestDto;
 import com.example.user_service.service.EndUserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +24,7 @@ public class EndUserControllerImpl implements EndUserController {
         return this.endUserService.getAllEndUsersForCountry(countryId);
     }
     @Override
-    public List<EndUserDto> getEndUsersForCounty(int countryId, int countyId) {
-        return this.endUserService.getAllEndUsersForCounty(countryId, countyId);
+    public List<EndUserDto> getEndUsersForCounty(EndUserRequestDto requestDto) {
+        return this.endUserService.getAllEndUsersForCounty(requestDto);
     }
 }

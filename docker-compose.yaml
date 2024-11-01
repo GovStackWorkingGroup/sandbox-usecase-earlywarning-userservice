@@ -10,6 +10,8 @@ services:
     restart: always
     ports:
       - '8080:8080'
+    networks:
+      - shared_network
     environment:
       SPRING_DATASOURCE_URL: "jdbc:postgresql://database:5432/user-db"
       SPRING_DATASOURCE_USERNAME: "user"
@@ -31,8 +33,12 @@ services:
       - '5432'
     volumes:
       - user-db:/var/lib/postgresql/data
+    networks:
+      - shared_network
 
   # Names of volumes
 volumes:
   user-db:
-#  backend:
+networks:
+  shared_network:
+    external: true

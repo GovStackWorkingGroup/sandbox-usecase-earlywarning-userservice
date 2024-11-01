@@ -51,7 +51,8 @@ public enum CountyEnum {
     MIGORI(44, "Migori"),
     KISII(45, "Kisii"),
     NYAMIRA(46, "Nyamira"),
-    NAIROBI(47, "Nairobi");
+    NAIROBI(47, "Nairobi"),
+    LAIPKIA(48, "Laipkia");
 
     private final int id;
     private final String name;

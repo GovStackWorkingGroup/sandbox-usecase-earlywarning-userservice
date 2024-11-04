@@ -28,25 +28,17 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public ResponseEntity<List<UserFullDto>> getAllUsers() {
-        return ResponseEntity.ok(this.userRepository.findAll().stream().map(e ->
-                UserFullDto.builder()
-                    .userUUID(e.getUserUUID())
-                    .firstName(e.getFirstName())
-                    .lastName(e.getLastName())
-                    .email(e.getEmail())
-                    .contactPhone(e.getContactPhone())
-                    .country(SimpleCountryDto.builder().countryId(e.getCountryId()).name(CountryEnum.getById(e.getCountryId()).getName()).build())
-                    .build())
-            .collect(Collectors.toList()));
+    public List<UserFullDto> getAllUsers() {
+        return this.userRepository.findAll().stream().map(userMapper::entityToDto)
+                .collect(Collectors.toList());
     }
 
-    public ResponseEntity checkIfUserCanBroadcast(UUID userUuid, int countryId) {
-        return this.userRepository.checkIfUserCanBroadcast(userUuid, PermissionEnum.BROADCAST.getName(), countryId).isPresent() ? ResponseEntity.ok().build() : ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+    public boolean checkIfUserCanBroadcast(UUID userUuid, int countryId) {
+        return this.userRepository.checkIfUserCanBroadcast(userUuid, PermissionEnum.BROADCAST.getName(), countryId).isPresent();
     }
 
     public Optional<UserFullDto> findUserByEmail(String email) {
         return this.userRepository.findOneByEmailIgnoreCase(email)
-            .map(userMapper::entityToDto);
+                .map(userMapper::entityToDto);
     }
 }

@@ -1,7 +1,10 @@
 package com.example.user_service.controller.impl;
 
 import com.example.user_service.controller.UserController;
+import com.example.user_service.controller.exception.NotFoundException;
+import com.example.user_service.controller.exception.UnauthorizedException;
 import com.example.user_service.models.dtos.UserFullDto;
+import com.example.user_service.security.SecurityUtils;
 import com.example.user_service.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +34,13 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public ResponseEntity<UserFullDto> login(String email, String password) {
-        return this.userService.simpleLogin(email, password);
+    public ResponseEntity<UserFullDto> currentUser() {
+        String currentUserEmail = SecurityUtils.getCurrentUserLogin()
+            .orElseThrow(() -> new UnauthorizedException("User not logged in"));
+
+        UserFullDto user = userService.findUserByEmail(currentUserEmail)
+            .orElseThrow(() -> new NotFoundException("User " + currentUserEmail + " not found"));
+
+        return ResponseEntity.ok(user);
     }
 }

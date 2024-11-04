@@ -1,6 +1,5 @@
 package com.example.user_service.repository;
 
-import com.example.user_service.models.dtos.UserFullDto;
 import com.example.user_service.repository.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -25,5 +24,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
             """, nativeQuery = true)
     Optional<User> checkIfUserCanBroadcast(UUID userUuid, String permissionName, int countryId);
 
-    Optional<User> findByEmailAndPassword(String email, String password);
+    Optional<User> findOneByEmailIgnoreCase(String login);
 }

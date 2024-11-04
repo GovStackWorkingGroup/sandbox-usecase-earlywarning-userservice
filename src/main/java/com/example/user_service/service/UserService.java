@@ -1,19 +1,19 @@
 package com.example.user_service.service;
 
+import com.example.user_service.config.PasswordEncoder;
 import com.example.user_service.models.PermissionEnum;
-import com.example.user_service.models.dtos.CountryDto;
-import com.example.user_service.models.dtos.EndUserDto;
 import com.example.user_service.models.dtos.SimpleCountryDto;
 import com.example.user_service.models.dtos.UserFullDto;
 import com.example.user_service.repository.UserRepository;
 import com.example.user_service.models.CountryEnum;
+import com.example.user_service.repository.entity.User;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -22,9 +22,11 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public ResponseEntity<List<UserFullDto>> getAllUsers() {
@@ -45,15 +47,23 @@ public class UserService {
     }
 
     public ResponseEntity<UserFullDto> simpleLogin(String email, String password) {
-        return this.userRepository.findByEmailAndPassword(email, password).map(user ->
-                ResponseEntity.ok(UserFullDto.builder()
+        final Optional<User> userOptional = this.userRepository.findByEmail(email);
+        if (userOptional.isPresent()) {
+            final User user = userOptional.get();
+            if (this.passwordEncoder.bCryptPasswordEncoder().matches(password, user.getPassword())) {
+                return ResponseEntity.ok(UserFullDto.builder()
                         .userUUID(user.getUserUUID())
                         .firstName(user.getFirstName())
                         .lastName(user.getLastName())
                         .email(user.getEmail())
                         .contactPhone(user.getContactPhone())
-                        .country(SimpleCountryDto.builder().countryId(user.getCountryId()).name(CountryEnum.getById(user.getCountryId()).getName()).build())
-                        .build())
-        ).orElse(ResponseEntity.status(HttpStatus.FORBIDDEN).build());
+                        .country(SimpleCountryDto.builder()
+                                .countryId(user.getCountryId())
+                                .name(CountryEnum.getById(user.getCountryId()).getName())
+                                .build())
+                        .build());
+            }
+        }
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 }

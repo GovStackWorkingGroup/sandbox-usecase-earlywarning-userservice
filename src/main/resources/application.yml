@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: user-service
+  liquibase:
+    change-log: liquibase/liquibase-changeLog.xml
+  jpa:
+    show-sql: 'true'
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  datasource:
+    password: password
+    username: user
+    url: jdbc:postgresql://localhost:5432/user-db
+security:
+  authentication:
+    jwt:
+      token-validity-in-seconds: '86400'
+      base64-secret: ejHY4YXbIgDYPLd7WNO6ybKfkPLmuEciRqdWLHSoNHm1/VBLyQ5tWKLm9i/6McY8wmdX5V7V4Z0AjNOLlB9udQ==
+logging:
+  level:
+    org:
+      hibernate:
+        type: TRACE
+        SQL: DEBUG

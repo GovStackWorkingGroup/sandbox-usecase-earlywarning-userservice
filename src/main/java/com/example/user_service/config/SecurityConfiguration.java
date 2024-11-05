@@ -31,29 +31,30 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
         http
-            .cors(withDefaults())
-            .csrf(AbstractHttpConfigurer::disable)
-            .httpBasic(withDefaults())
-            .headers(headers ->
-                headers
-                    .frameOptions(FrameOptionsConfig::sameOrigin)
-                    .referrerPolicy(referrer -> referrer.policy(ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN))
-            )
-            .authorizeHttpRequests(authz ->
-                authz
-                    .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/auth/login")).permitAll()
-                    .requestMatchers(mvc.pattern("/api/**")).authenticated()
-                    .requestMatchers(mvc.pattern("/management/health")).permitAll()
-                    .requestMatchers(mvc.pattern("/management/health/**")).permitAll()
-                    .requestMatchers(mvc.pattern("/management/info")).permitAll()
-            )
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .exceptionHandling(exceptions ->
-                exceptions
-                    .authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
-                    .accessDeniedHandler(new BearerTokenAccessDeniedHandler())
-            )
-            .oauth2ResourceServer(oauth2 -> oauth2.jwt(withDefaults()));
+                .cors(withDefaults())
+                .csrf(AbstractHttpConfigurer::disable)
+                .httpBasic(withDefaults())
+                .headers(headers ->
+                        headers
+                                .frameOptions(FrameOptionsConfig::sameOrigin)
+                                .referrerPolicy(referrer -> referrer.policy(ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN))
+                )
+                .authorizeHttpRequests(authz ->
+                        authz
+                                .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/v1/auth/login")).permitAll()
+                                .requestMatchers(mvc.pattern(HttpMethod.GET,"/api/v1/user/me")).authenticated()
+                                .requestMatchers(mvc.pattern("/api/**")).permitAll()
+                                .requestMatchers(mvc.pattern("/management/health")).permitAll()
+                                .requestMatchers(mvc.pattern("/management/health/**")).permitAll()
+                                .requestMatchers(mvc.pattern("/management/info")).permitAll()
+                )
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .exceptionHandling(exceptions ->
+                        exceptions
+                                .authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
+                                .accessDeniedHandler(new BearerTokenAccessDeniedHandler())
+                )
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(withDefaults()));
         return http.build();
     }
 

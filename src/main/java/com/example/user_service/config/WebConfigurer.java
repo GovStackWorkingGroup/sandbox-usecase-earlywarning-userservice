@@ -1,4 +1,4 @@
-package com.example.user_service.config;
+package global.govstack.user_service.config;
 
 import jakarta.servlet.ServletContext;
 import org.slf4j.Logger;

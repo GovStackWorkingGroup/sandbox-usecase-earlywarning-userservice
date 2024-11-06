@@ -1,4 +1,4 @@
-package com.example.user_service.models.dtos;
+package global.govstack.user_service.models.dtos;
 
 import lombok.Builder;
 

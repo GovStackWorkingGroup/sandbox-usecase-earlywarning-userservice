@@ -1,6 +1,6 @@
-package com.example.user_service.repository;
+package global.govstack.user_service.repository;
 
-import com.example.user_service.repository.entity.User;
+import global.govstack.user_service.repository.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

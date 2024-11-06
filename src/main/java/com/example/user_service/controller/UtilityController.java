@@ -1,8 +1,8 @@
-package com.example.user_service.controller;
+package global.govstack.user_service.controller;
 
-import com.example.user_service.models.dtos.CommunicationChannelDto;
-import com.example.user_service.models.dtos.CountryDto;
-import com.example.user_service.models.dtos.LanguageDto;
+import global.govstack.user_service.models.dtos.CommunicationChannelDto;
+import global.govstack.user_service.models.dtos.CountryDto;
+import global.govstack.user_service.models.dtos.LanguageDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 

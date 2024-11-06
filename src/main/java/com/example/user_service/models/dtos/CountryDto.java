@@ -1,7 +1,7 @@
-package com.example.user_service.models.dtos;
+package global.govstack.user_service.models.dtos;
 
-import com.example.user_service.models.CountyEnum;
-import com.example.user_service.models.LanguageEnum;
+import global.govstack.user_service.models.CountyEnum;
+import global.govstack.user_service.models.LanguageEnum;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 

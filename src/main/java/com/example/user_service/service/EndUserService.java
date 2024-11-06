@@ -1,11 +1,11 @@
-package com.example.user_service.service;
+package global.govstack.user_service.service;
 
-import com.example.user_service.models.CountyEnum;
-import com.example.user_service.models.dtos.*;
-import com.example.user_service.repository.EndUserRepository;
-import com.example.user_service.models.CommunicationChannelEnum;
-import com.example.user_service.models.CountryEnum;
-import com.example.user_service.models.LanguageEnum;
+import global.govstack.user_service.models.CountyEnum;
+import global.govstack.user_service.models.dtos.*;
+import global.govstack.user_service.repository.EndUserRepository;
+import global.govstack.user_service.models.CommunicationChannelEnum;
+import global.govstack.user_service.models.CountryEnum;
+import global.govstack.user_service.models.LanguageEnum;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

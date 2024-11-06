@@ -1,11 +1,11 @@
-package com.example.user_service.service;
+package global.govstack.user_service.service;
 
-import com.example.user_service.mapper.UserMapper;
-import com.example.user_service.models.CountryEnum;
-import com.example.user_service.models.PermissionEnum;
-import com.example.user_service.models.dtos.SimpleCountryDto;
-import com.example.user_service.models.dtos.UserFullDto;
-import com.example.user_service.repository.UserRepository;
+import global.govstack.user_service.mapper.UserMapper;
+import global.govstack.user_service.models.CountryEnum;
+import global.govstack.user_service.models.PermissionEnum;
+import global.govstack.user_service.models.dtos.SimpleCountryDto;
+import global.govstack.user_service.models.dtos.UserFullDto;
+import global.govstack.user_service.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

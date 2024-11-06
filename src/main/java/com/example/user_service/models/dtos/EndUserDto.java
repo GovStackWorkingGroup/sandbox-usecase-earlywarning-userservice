@@ -1,9 +1,9 @@
-package com.example.user_service.models.dtos;
+package global.govstack.user_service.models.dtos;
 
-import com.example.user_service.models.CommunicationChannelEnum;
-import com.example.user_service.models.CountryEnum;
-import com.example.user_service.models.CountyEnum;
-import com.example.user_service.models.LanguageEnum;
+import global.govstack.user_service.models.CommunicationChannelEnum;
+import global.govstack.user_service.models.CountryEnum;
+import global.govstack.user_service.models.CountyEnum;
+import global.govstack.user_service.models.LanguageEnum;
 import lombok.Builder;
 
 import java.util.UUID;

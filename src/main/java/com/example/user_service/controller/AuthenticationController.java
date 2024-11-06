@@ -1,6 +1,6 @@
-package com.example.user_service.controller;
+package global.govstack.user_service.controller;
 
-import com.example.user_service.security.JWTToken;
+import global.govstack.user_service.security.JWTToken;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;

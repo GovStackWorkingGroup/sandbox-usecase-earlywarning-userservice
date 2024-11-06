@@ -1,4 +1,4 @@
-package com.example.user_service.models;
+package global.govstack.user_service.models;
 
 public enum PermissionEnum {
 

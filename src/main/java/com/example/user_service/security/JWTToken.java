@@ -1,4 +1,4 @@
-package com.example.user_service.security;
+package global.govstack.user_service.security;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

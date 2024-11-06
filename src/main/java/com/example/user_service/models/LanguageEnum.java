@@ -1,4 +1,4 @@
-package com.example.user_service.models;
+package global.govstack.user_service.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)

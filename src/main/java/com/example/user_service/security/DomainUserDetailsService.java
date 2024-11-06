@@ -1,7 +1,7 @@
-package com.example.user_service.security;
+package global.govstack.user_service.security;
 
-import com.example.user_service.repository.UserRepository;
-import com.example.user_service.repository.entity.User;
+import global.govstack.user_service.repository.UserRepository;
+import global.govstack.user_service.repository.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -1,11 +1,11 @@
-package com.example.user_service.controller.impl;
+package global.govstack.user_service.controller.impl;
 
-import com.example.user_service.controller.UserController;
-import com.example.user_service.controller.exception.NotFoundException;
-import com.example.user_service.controller.exception.UnauthorizedException;
-import com.example.user_service.models.dtos.UserFullDto;
-import com.example.user_service.security.SecurityUtils;
-import com.example.user_service.service.UserService;
+import global.govstack.user_service.controller.UserController;
+import global.govstack.user_service.controller.exception.NotFoundException;
+import global.govstack.user_service.controller.exception.UnauthorizedException;
+import global.govstack.user_service.models.dtos.UserFullDto;
+import global.govstack.user_service.security.SecurityUtils;
+import global.govstack.user_service.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;

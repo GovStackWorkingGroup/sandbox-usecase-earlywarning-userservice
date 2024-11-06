@@ -1,4 +1,4 @@
-package com.example.user_service.config;
+package global.govstack.user_service.config;
 
 import com.nimbusds.jose.jwk.source.ImmutableSecret;
 import com.nimbusds.jose.util.Base64;
@@ -14,7 +14,7 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 
-import static com.example.user_service.security.SecurityUtils.JWT_ALGORITHM;
+import static global.govstack.user_service.security.SecurityUtils.JWT_ALGORITHM;
 
 @Configuration
 public class SecurityJwtConfiguration {

@@ -1,11 +1,11 @@
-package com.example.user_service.service;
+package global.govstack.user_service.service;
 
-import com.example.user_service.models.CommunicationChannelEnum;
-import com.example.user_service.models.CountryEnum;
-import com.example.user_service.models.LanguageEnum;
-import com.example.user_service.models.dtos.CommunicationChannelDto;
-import com.example.user_service.models.dtos.CountryDto;
-import com.example.user_service.models.dtos.LanguageDto;
+import global.govstack.user_service.models.CommunicationChannelEnum;
+import global.govstack.user_service.models.CountryEnum;
+import global.govstack.user_service.models.LanguageEnum;
+import global.govstack.user_service.models.dtos.CommunicationChannelDto;
+import global.govstack.user_service.models.dtos.CountryDto;
+import global.govstack.user_service.models.dtos.LanguageDto;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;

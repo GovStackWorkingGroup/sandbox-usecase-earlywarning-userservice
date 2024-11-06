@@ -1,4 +1,4 @@
-package com.example.user_service.repository.entity;
+package global.govstack.user_service.repository.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,9 +1,9 @@
-package com.example.user_service.controller.impl;
+package global.govstack.user_service.controller.impl;
 
-import com.example.user_service.controller.EndUserController;
-import com.example.user_service.models.dtos.EndUserDto;
-import com.example.user_service.models.dtos.EndUserRequestDto;
-import com.example.user_service.service.EndUserService;
+import global.govstack.user_service.controller.EndUserController;
+import global.govstack.user_service.models.dtos.EndUserDto;
+import global.govstack.user_service.models.dtos.EndUserRequestDto;
+import global.govstack.user_service.service.EndUserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

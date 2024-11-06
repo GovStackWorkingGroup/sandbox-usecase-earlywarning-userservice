@@ -1,10 +1,10 @@
-package com.example.user_service.controller.impl;
+package global.govstack.user_service.controller.impl;
 
-import com.example.user_service.controller.UtilityController;
-import com.example.user_service.models.dtos.CommunicationChannelDto;
-import com.example.user_service.models.dtos.CountryDto;
-import com.example.user_service.models.dtos.LanguageDto;
-import com.example.user_service.service.UtilityService;
+import global.govstack.user_service.controller.UtilityController;
+import global.govstack.user_service.models.dtos.CommunicationChannelDto;
+import global.govstack.user_service.models.dtos.CountryDto;
+import global.govstack.user_service.models.dtos.LanguageDto;
+import global.govstack.user_service.service.UtilityService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

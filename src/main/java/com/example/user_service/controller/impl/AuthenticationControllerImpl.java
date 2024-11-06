@@ -1,7 +1,7 @@
-package com.example.user_service.controller.impl;
+package global.govstack.user_service.controller.impl;
 
-import com.example.user_service.controller.AuthenticationController;
-import com.example.user_service.security.JWTToken;
+import global.govstack.user_service.controller.AuthenticationController;
+import global.govstack.user_service.security.JWTToken;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,8 +22,8 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.stream.Collectors;
 
-import static com.example.user_service.security.SecurityUtils.AUTHORITIES_KEY;
-import static com.example.user_service.security.SecurityUtils.JWT_ALGORITHM;
+import static global.govstack.user_service.security.SecurityUtils.AUTHORITIES_KEY;
+import static global.govstack.user_service.security.SecurityUtils.JWT_ALGORITHM;
 
 @RestController
 @RequestMapping("/api/v1/auth")

@@ -1,13 +1,9 @@
 package global.govstack.user_service.service;
 
 import global.govstack.user_service.mapper.UserMapper;
-import global.govstack.user_service.models.CountryEnum;
 import global.govstack.user_service.models.PermissionEnum;
-import global.govstack.user_service.models.dtos.SimpleCountryDto;
 import global.govstack.user_service.models.dtos.UserFullDto;
 import global.govstack.user_service.repository.UserRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

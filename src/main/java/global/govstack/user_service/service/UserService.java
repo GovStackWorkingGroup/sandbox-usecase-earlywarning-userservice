@@ -29,6 +29,11 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    public Optional<UserFullDto> getUser(UUID userId) {
+        return this.userRepository.findOneByUserUUID(userId)
+                .map(userMapper::entityToDto);
+    }
+
     public boolean checkIfUserCanBroadcast(UUID userUuid, int countryId) {
         return this.userRepository.checkIfUserCanBroadcast(userUuid, PermissionEnum.BROADCAST.getName(), countryId).isPresent();
     }
@@ -37,4 +42,5 @@ public class UserService {
         return this.userRepository.findOneByEmailIgnoreCase(email)
                 .map(userMapper::entityToDto);
     }
+
 }

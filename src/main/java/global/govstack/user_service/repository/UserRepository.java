@@ -24,5 +24,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
             """, nativeQuery = true)
     Optional<User> checkIfUserCanBroadcast(UUID userUuid, String permissionName, int countryId);
 
+    Optional<User> findOneByUserUUID(UUID userUuid);
+
     Optional<User> findOneByEmailIgnoreCase(String login);
 }

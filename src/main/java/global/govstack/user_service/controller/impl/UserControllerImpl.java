@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "/api/v1/user/")
+@RequestMapping(path = "/api/v1/users/")
 public class UserControllerImpl implements UserController {
 
     private final UserService userService;
@@ -25,8 +25,14 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public ResponseEntity<List<UserFullDto>> getAllUsers() {
-        return ResponseEntity.ok(this.userService.getAllUsers());
+    public List<UserFullDto> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @Override
+    public UserFullDto getUser(UUID userId) {
+        return userService.getUser(userId)
+                .orElseThrow(() -> new NotFoundException("User with ID " + userId + " not found"));
     }
 
     @Override
@@ -35,13 +41,11 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public ResponseEntity<UserFullDto> currentUser() {
+    public UserFullDto currentUser() {
         String currentUserEmail = SecurityUtils.getCurrentUserLogin()
                 .orElseThrow(() -> new UnauthorizedException("User not logged in"));
 
-        UserFullDto user = userService.findUserByEmail(currentUserEmail)
+        return userService.findUserByEmail(currentUserEmail)
                 .orElseThrow(() -> new NotFoundException("User " + currentUserEmail + " not found"));
-
-        return ResponseEntity.ok(user);
     }
 }

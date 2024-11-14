@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -36,8 +37,10 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public ResponseEntity canBroadcast(UUID userUuid, int countryId) {
-        return this.userService.checkIfUserCanBroadcast(userUuid, countryId) ? ResponseEntity.ok().build() : ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+    public ResponseEntity<?> canBroadcast(UUID userUuid, int countryId) {
+        return this.userService.checkIfUserCanBroadcast(userUuid, countryId) ? ResponseEntity.ok().body(Boolean.TRUE) : ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "User is not authorized to broadcast",
+                "userUuid", userUuid,
+                "countryId", countryId));
     }
 
     @Override

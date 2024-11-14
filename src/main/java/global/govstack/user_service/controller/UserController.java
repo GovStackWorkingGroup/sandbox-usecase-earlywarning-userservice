@@ -18,7 +18,7 @@ public interface UserController {
     UserFullDto getUser(@PathVariable UUID userId);
 
     @GetMapping(path = "/canBroadcast")
-    ResponseEntity canBroadcast(@RequestParam UUID userUuid, @RequestParam int countryId);
+    ResponseEntity<?> canBroadcast(@RequestParam UUID userUuid, @RequestParam int countryId);
 
     @GetMapping(path = "/me")
     UserFullDto currentUser();

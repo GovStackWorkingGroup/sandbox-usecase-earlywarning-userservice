@@ -27,4 +27,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findOneByUserUUID(UUID userUuid);
 
     Optional<User> findOneByEmailIgnoreCase(String login);
+
+    @Query(value = """
+            SELECT  (ut.useruuid = :userUuid) AS result
+            FROM user_table ut
+            WHERE ut.id = (SELECT MAX(ut2.id) FROM user_table ut2);
+            """, nativeQuery = true)
+    boolean checkUser(UUID userUuid);
 }

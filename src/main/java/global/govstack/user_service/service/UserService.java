@@ -24,10 +24,6 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<UserFullDto> getAllUsers() {
-        return this.userRepository.findAll().stream().map(userMapper::entityToDto)
-                .collect(Collectors.toList());
-    }
 
     public Optional<UserFullDto> getUser(UUID userId) {
         return this.userRepository.findOneByUserUUID(userId)
@@ -43,4 +39,7 @@ public class UserService {
                 .map(userMapper::entityToDto);
     }
 
+    public boolean checkUser(UUID userUuid) {
+        return this.userRepository.checkUser(userUuid);
+    }
 }

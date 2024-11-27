@@ -4,16 +4,16 @@ import global.govstack.user_service.mapper.UserMapper;
 import global.govstack.user_service.models.PermissionEnum;
 import global.govstack.user_service.models.dtos.UserFullDto;
 import global.govstack.user_service.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@Slf4j
 public class UserService {
 
     private final UserMapper userMapper;
@@ -39,7 +39,20 @@ public class UserService {
                 .map(userMapper::entityToDto);
     }
 
+    //TODO REMOVE
+//    public boolean checkUser(UUID userUuid) {
+//        return this.userRepository.checkUser(userUuid);
+//    }
+
     public boolean checkUser(UUID userUuid) {
-        return this.userRepository.checkUser(userUuid);
+        log.info("Checking access for the user: " + userUuid);
+        String uuidFromDb = this.userRepository.checkUser(userUuid);
+        if (userUuid.toString().equalsIgnoreCase(uuidFromDb)) {
+            log.info("ok, uuids are the same");
+            return true;
+        } else {
+            log.info("not equal:" + "\n" + uuidFromDb + "\n" + userUuid);
+            return false;
+        }
     }
 }

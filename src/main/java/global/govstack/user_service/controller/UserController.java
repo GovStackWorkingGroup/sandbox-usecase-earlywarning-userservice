@@ -16,6 +16,7 @@ public interface UserController {
 
     @GetMapping(path = "/canBroadcast")
     ResponseEntity<?> canBroadcast(@RequestParam UUID userUuid, @RequestParam int countryId);
+
     @GetMapping(path = "/checkUser")
     ResponseEntity<?> checkUser(@RequestParam UUID userId);
 

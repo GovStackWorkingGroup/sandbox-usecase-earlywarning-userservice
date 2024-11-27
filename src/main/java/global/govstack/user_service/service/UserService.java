@@ -39,20 +39,20 @@ public class UserService {
                 .map(userMapper::entityToDto);
     }
 
+    public boolean checkUser(UUID userUuid) {
+        return this.userRepository.checkUser(userUuid);
+    }
+
     //TODO REMOVE
 //    public boolean checkUser(UUID userUuid) {
-//        return this.userRepository.checkUser(userUuid);
+//        log.info("Checking access for the user: " + userUuid);
+//        String uuidFromDb = this.userRepository.checkUser(userUuid);
+//        if (userUuid.toString().equalsIgnoreCase(uuidFromDb)) {
+//            log.info("ok, uuids are the same");
+//            return true;
+//        } else {
+//            log.info("not equal:" + "\n" + uuidFromDb + "\n" + userUuid);
+//            return false;
+//        }
 //    }
-
-    public boolean checkUser(UUID userUuid) {
-        log.info("Checking access for the user: " + userUuid);
-        String uuidFromDb = this.userRepository.checkUser(userUuid);
-        if (userUuid.toString().equalsIgnoreCase(uuidFromDb)) {
-            log.info("ok, uuids are the same");
-            return true;
-        } else {
-            log.info("not equal:" + "\n" + uuidFromDb + "\n" + userUuid);
-            return false;
-        }
-    }
 }

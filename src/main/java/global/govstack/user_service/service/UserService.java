@@ -40,6 +40,7 @@ public class UserService {
     }
 
     public boolean checkUser(UUID userUuid) {
+        log.info("Checking access for the user: " + userUuid);
         return this.userRepository.checkUser(userUuid);
     }
 

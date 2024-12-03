@@ -26,11 +26,6 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public List<UserFullDto> getAllUsers() {
-        return userService.getAllUsers();
-    }
-
-    @Override
     public UserFullDto getUser(UUID userId) {
         return userService.getUser(userId)
                 .orElseThrow(() -> new NotFoundException("User with ID " + userId + " not found"));
@@ -41,6 +36,11 @@ public class UserControllerImpl implements UserController {
         return this.userService.checkIfUserCanBroadcast(userUuid, countryId) ? ResponseEntity.ok().body(Boolean.TRUE) : ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "User is not authorized to broadcast",
                 "userUuid", userUuid,
                 "countryId", countryId));
+    }
+
+    @Override
+    public ResponseEntity<?> checkUser(UUID userId) {
+        return this.userService.checkUser(userId) ? ResponseEntity.ok().body(Boolean.TRUE) : ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Not allowed");
     }
 
     @Override

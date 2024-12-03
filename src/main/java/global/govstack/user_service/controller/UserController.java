@@ -11,14 +11,14 @@ import java.util.UUID;
 
 public interface UserController {
 
-    @GetMapping()
-    List<UserFullDto> getAllUsers();
-
     @GetMapping("/{userId}")
     UserFullDto getUser(@PathVariable UUID userId);
 
     @GetMapping(path = "/canBroadcast")
     ResponseEntity<?> canBroadcast(@RequestParam UUID userUuid, @RequestParam int countryId);
+
+    @GetMapping(path = "/checkUser")
+    ResponseEntity<?> checkUser(@RequestParam UUID userId);
 
     @GetMapping(path = "/me")
     UserFullDto currentUser();

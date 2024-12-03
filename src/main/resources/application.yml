@@ -4,7 +4,7 @@ spring:
   liquibase:
     change-log: liquibase/liquibase-changeLog.xml
   jpa:
-    show-sql: 'true'
+    show-sql: true
     hibernate:
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
@@ -24,3 +24,4 @@ logging:
       hibernate:
         type: TRACE
         SQL: DEBUG
+
